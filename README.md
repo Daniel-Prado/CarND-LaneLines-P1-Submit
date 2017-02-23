@@ -18,7 +18,11 @@ The goals / steps of this project are the following:
 
 ### Reflection
 
-###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+### My Finding Lanes pipeline description
+
+My pipeline consists of the following steps:
+1. Convert the input image to grayscale using the provided helper function that performs a `COLOR_RGB2GRAY` conversion. I have also experimented with the Intensity component of the HSI colorspace, which is referred to be more optimal in computer vision but I really haven't observed a difference.
+2. second step
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 
