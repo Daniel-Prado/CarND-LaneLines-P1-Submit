@@ -24,7 +24,8 @@ My pipeline consists of the following steps:
 
 1. **Convert the input image to grayscale.**
 Instead of using the suggested `COLOR_RGB2GRAY` conversion, I experimented with the HSI colorspace and finally I found out that it was more optimal to enhance the Yellow component of the image. **I did this by removing the Blue component, so my grayscale was `0.5*R+0.5*G.`**
-[image1]: ./writeup_images/Gray_YellowFilter.jpg "Left:COLOR_RGB2GRAY, Right:.5*R+.5*G"
+You can note this slight advantage in the left yellow line with low contrast in the images below. The right one improves contrast by removing the blue component:
+![RGBvsRG comparison](./writeup_images/Gray_YellowFilter.jpg "Left:COLOR_RGB2GRAY, Right:.5*R+.5*G")
 
 
 2. **Apply a Gaussian filter** to soften the image and avoid noise. I have used a kernel size of 5 that smooths noise and minimizes spurious edges, while keeping detail in tricky situations when there is not much contrast in the lines.
