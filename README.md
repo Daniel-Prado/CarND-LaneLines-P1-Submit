@@ -53,6 +53,7 @@ I managed to do this by the following steps:
 3. Finally:
    * Determine the x position of the final solid line at the top and the bottom of the region of interest, from the average central point and the average slope.
    * Draw the solid lines on the left side and right side of the lane.
+   
 ---
 ### 2. Identify potential shortcomings with your current pipeline
 My pipeline is well-enough fine-tuned to provide a very good result with the two sample videos.
@@ -73,6 +74,7 @@ In any case the proposed pipeline would present potential shortcomings in a numb
 * Illumination conditions, specially at dusk or night.
 * Variable illumination.
 * Lower radius curves.
+
 ---
 ### 3. Suggest possible improvements to your pipeline
 * The current pipeline hardcodes the parameters of two critical functions, the Canny Edges detection and the Hough Transform. It is however very difficult to find parameters that suit well any situation. So, one proposal would be to make the thresholds adaptative to the image conditions. For example, when the contrast in the region of interest is very low.
