@@ -26,7 +26,7 @@ My pipeline consists of the following steps:
 Instead of using the suggested `COLOR_RGB2GRAY` conversion, I experimented with the HSI colorspace and finally I found out that it was more optimal to enhance the Yellow component of the image. **I did this by removing the Blue component, so my grayscale was `0.5*R+0.5*G.`**
 You can note this slight advantage in the left yellow line with low contrast in the images below. The right one improves contrast by removing the blue component:
 
-![RGBvsRG comparison](./writeup_images/Gray_YellowFilter.jpg "Left:COLOR_RGB2GRAY, Right:.5*R+.5*G")
+    ![RGBvsRG comparison](./writeup_images/Gray_YellowFilter.jpg "Left:COLOR_RGB2GRAY, Right:.5*R+.5*G")
 
 
 2. **Apply a Gaussian filter** to soften the image and avoid noise. I have used a kernel size of 5 that smooths noise and minimizes spurious edges, while keeping detail in tricky situations when there is not much contrast in the lines.
@@ -34,11 +34,11 @@ You can note this slight advantage in the left yellow line with low contrast in 
 3. **Detect Edges using the Canny Edges algorithm**: this allows to detect the edges of the shapes contained in the image, including (but not only) the road lines. The parameters used have been a (low, high) threshold of values (60,100), that seems to provide enough level of detail in tricky situations (optional challenge).
 Here is a sample resulting image:
 
-![Canny Edges](./writeup_images/Canny_Edges.jpg "Canny Edges Detection")
+    ![Canny Edges](./writeup_images/Canny_Edges.jpg "Canny Edges Detection")
 
 4. **Mask the Region of Interest**: we apply a mask to the edges image to focus only on the area where the lane lines can be present, and setting the rest to black. The are chosen is a trapezoid polygon, with bottom vertices in the corners of the image and top vertices aproximately in the horizon of the road, 10% of the image width.
 
-![Masked Image](./writeup_images/Masked.jpg "Masked Region of Interest")
+       ![Masked Image](./writeup_images/Masked.jpg "Masked Region of Interest")
 
 5. **Apply Hough Transform to find lines**: this allows to detect the lines in the edges image, using the provided helper function `hough_lines`. This function performs two steps:
    - Apply the transform to obtain a set of lines.
@@ -46,13 +46,13 @@ Here is a sample resulting image:
 
 Below you can see both steps, Hough Transform + Outlier Removal, and Average Line Estimated.
 
-![Hough_Transform](./writeup_images/Hough_Transform.jpg "Lines detected by Hough Transform (outliers discarded)")
-
-![Averaged_Lines](./writeup_images/Averaged_Lines.jpg "Average calculated based on the above lines")
-
+    ![Hough_Transform](./writeup_images/Hough_Transform.jpg "Lines detected by Hough Transform (outliers discarded)")
+    ![Averaged_Lines](./writeup_images/Averaged_Lines.jpg "Average calculated based on the above lines")
+    
 6. **Overlay the road lane lines over the original image** using the provided `weighted_img` function
 
-![Weighted Overlay](./writeup_images/Weighted_Overlay.jpg "Overlay of the final lines over the original image")
+       ![Weighted Overlay](./writeup_images/Weighted_Overlay.jpg "Overlay of the final lines over the original image")
+
 
 #### 1.1 Draw Lines Improvements
 A key aspect of this project was to develop an improved version of the `draw_lines` function that identifies the full extent of the lane and marks it clearly with a single, solid line over the left lane line, and a single, solid line over the right lane line. The lines should start from the bottom of the image and extend out to the top of the region of interest.
