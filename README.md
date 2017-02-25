@@ -58,16 +58,21 @@ Below you can see both steps, Hough Transform + Outlier Removal, and Average Lin
 A key aspect of this project was to develop an improved version of the `draw_lines` function that identifies the full extent of the lane and marks it clearly with a single, solid line over the left lane line, and a single, solid line over the right lane line. The lines should start from the bottom of the image and extend out to the top of the region of interest.
 I managed to do this by the following steps:
 1. For each line in the set of lines of the frame:
-   * Calculate the central point of the line.
-   * Calculate the slope of the line.
-   * Determine if the line corresponds to the lane left-line or the right-line.
-   * Discard outliers by filtering slope values and position of line in the image relative to its slope.
+   
+       * Calculate the central point of the line.
+       * Calculate the slope of the line.
+       * Determine if the line corresponds to the lane left-line or the right-line.
+       * Discard outliers by filtering slope values and position of line in the image relative to its slope.
+   
 2. For the accepted lines:
-   * Calculate the slope average weighted by its length.
-   * Calculate the average central point
+
+       * Calculate the slope average weighted by its length.
+       * Calculate the average central point
+
 3. Finally:
-   * Determine the x position of the final solid line at the top and the bottom of the region of interest, from the average central point and the average slope.
-   * Draw the solid lines on the left side and right side of the lane.
+
+       * Determine the x position of the final solid line at the top and the bottom of the region of interest, from the average central point and the average slope.
+       * Draw the solid lines on the left side and right side of the lane.
    
 ---
 ### 2. Identify potential shortcomings with your current pipeline
