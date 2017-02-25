@@ -57,6 +57,7 @@ Below you can see both steps, Hough Transform + Outlier Removal, and Average Lin
 ### Draw Lines Improvements
 A key aspect of this project was to develop an improved version of the `draw_lines` function that identifies the full extent of the lane and marks it clearly with a single, solid line over the left lane line, and a single, solid line over the right lane line. The lines should start from the bottom of the image and extend out to the top of the region of interest.
 I managed to do this by the following steps:
+
 1. For each line in the set of lines of the frame:
    
        * Calculate the central point of the line.
