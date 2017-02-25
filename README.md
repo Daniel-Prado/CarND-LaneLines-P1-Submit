@@ -38,10 +38,21 @@ Here is a sample resulting image:
 
 4. **Mask the Region of Interest**: we apply a mask to the edges image to focus only on the area where the lane lines can be present, and setting the rest to black. The are chosen is a trapezoid polygon, with bottom vertices in the corners of the image and top vertices aproximately in the horizon of the road, 10% of the image width.
 
+![Masked Image](./writeup_images/Masked.jpg "Masked Region of Interest")
+
 5. **Apply Hough Transform to find lines**: this allows to detect the lines in the edges image, using the provided helper function `hough_lines`. This function performs two steps:
    - Apply the transform to obtain a set of lines.
    - Call the `draw_lines` method which analizes the detected lines, removes outliers, and averages the lines information to estimate the road lane lines position. **This is explained in more detail in the following section.**
+
+Below you can see both steps, Hough Transform + Outlier Removal, and Average Line Estimated.
+
+![Hough_Transform](./writeup_images/Hough_Transform.jpg "Lines detected by Hough Transform (outliers discarded)")
+
+![Averaged_Lines](./writeup_images/Averaged_Lines.jpg "Average calculated based on the above lines")
+
 6. **Overlay the road lane lines over the original image** using the provided `weighted_img` function
+
+![Weighted Overlay](./writeup_images/Weighted_Overlay.jpg "Overlay of the final lines over the original image")
 
 #### 1.1 Draw Lines Improvements
 A key aspect of this project was to develop an improved version of the `draw_lines` function that identifies the full extent of the lane and marks it clearly with a single, solid line over the left lane line, and a single, solid line over the right lane line. The lines should start from the bottom of the image and extend out to the top of the region of interest.
