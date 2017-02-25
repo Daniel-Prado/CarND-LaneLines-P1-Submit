@@ -43,10 +43,10 @@ Here is a sample resulting image:
 5. **Apply Hough Transform to find lines**: this allows to detect the lines in the edges image, using the provided helper function `hough_lines`. This function performs two steps:
    - Apply the transform to obtain a set of lines.
    - Call the `draw_lines` method which analizes the detected lines, removes outliers, and averages the lines information to estimate the road lane lines position. **This is explained in more detail in the following section.**
-
 Below you can see both steps, Hough Transform + Outlier Removal, and Average Line Estimated.
 
     ![Hough_Transform](./writeup_images/Hough_Transform.jpg "Lines detected by Hough Transform (outliers discarded)")
+    
     ![Averaged_Lines](./writeup_images/Averaged_Lines.jpg "Average calculated based on the above lines")
     
 6. **Overlay the road lane lines over the original image** using the provided `weighted_img` function
