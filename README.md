@@ -31,7 +31,7 @@ You can note this slight advantage in the left yellow line with low contrast in 
 
 2. **Apply a Gaussian filter** to soften the image and avoid noise. I have used a kernel size of 5 that smooths noise and minimizes spurious edges, while keeping detail in tricky situations when there is not much contrast in the lines.
 
-3. **Detect Edges using the Canny Edges algorithm**: this allows to detect the edges of the shapes contained in the image, including (but not only) the road lines. The parameters used have been a (low, high) threshold of values (60,100), that seems to provide enough level of detail in tricky situations (optional challenge).
+3. **Detect Edges using the Canny Edges algorithm**: this allows to detect the edges of the shapes contained in the image, including (but not only) the road lines. The parameters used have been a (low, high) threshold of values (40,80), that seems to provide a tradeoff between getting enough level of detail in tricky situations (optional challenge) and keeping not too much clutter.
 Here is a sample resulting image:
 
     ![Canny Edges](./writeup_images/Canny_Edges.jpg "Canny Edges Detection")
@@ -41,7 +41,7 @@ Here is a sample resulting image:
        ![Masked Image](./writeup_images/Masked.jpg "Masked Region of Interest")
 
 5. **Apply Hough Transform to find lines**: this allows to detect the lines in the edges image, using the provided helper function `hough_lines`. This function performs two steps:
-   - Apply the transform to obtain a set of lines.
+   - Apply the transform to obtain a set of lines. The parameters used have been `threshold=40, min_line_len=30, max_line_gap=200`
    - Call the `draw_lines` method which analizes the detected lines, removes outliers, and averages the lines information to estimate the road lane lines position. **This is explained in more detail in the following section.**
 Below you can see both steps, Hough Transform + Outlier Removal, and Average Line Estimated.
 
